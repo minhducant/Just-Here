@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "welcome_back": "Welcome back",
+    "continue_with_google": "Continue with Google",
+    "continue_with_facebook": "Continue with Facebook",
+    "continue_with_zalo": "Continue with Zalo",
+    "continue_with_apple": "Continue with Apple",
+    "continue_with_x": "Continue with X",
+    "continue_with_telegram": "Continue with Telegram",
+    "continue_with_line": "Continue with Line",
+    "continue_with_kakaotalk": "Continue with KakaoTalk"
+  }
+}

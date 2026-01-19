@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "welcome_back": "Chào mừng trở lại",
+    "continue_with_google": "Tiếp tục với Google",
+    "continue_with_facebook": "Tiếp tục với Facebook",
+    "continue_with_zalo": "Tiếp tục với Zalo",
+    "continue_with_apple": "Tiếp tục với Apple",
+    "continue_with_x": "Tiếp tục với X",
+    "continue_with_telegram": "Tiếp tục với Telegram",
+    "continue_with_line": "Tiếp tục với Line",
+    "continue_with_kakaotalk": "Tiếp tục với KakaoTalk"
+  }
+}

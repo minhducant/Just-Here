@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>just_here</string>
+	<string>Just Here</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,20 +22,45 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.915630225974-u7i1crjrdva07jbbdog18kces5pi2fpe</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>zalo-2133744713560169067</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>zalosdk</string>
+		<string>zaloshareext</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-	  <!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
 		<key>NSAllowsArbitraryLoads</key>
-		<false/>
+		<true/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>We use your approximate location to personalize daily content.</string>
+	<key>RCTNewArchEnabled</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -45,10 +70,24 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+	<string>PlusJakartaSans-Regular.ttf</string>
+	<string>PlusJakartaSans-Medium.ttf</string>
+	<string>PlusJakartaSans-SemiBold.ttf</string>
+	<string>PlusJakartaSans-Bold.ttf</string>
+	<string>PlusJakartaSans-Italic.ttf</string>
+	<string>PlusJakartaSans-MediumItalic.ttf</string>
+	<string>PlusJakartaSans-BoldItalic.ttf</string>
+	<string>PlusJakartaSans-ExtraLight.ttf</string>
+	<string>PlusJakartaSans-ExtraLightItalic.ttf</string>
+	<string>PlusJakartaSans-Light.ttf</string>
+	<string>PlusJakartaSans-LightItalic.ttf</string>
+	<string>PlusJakartaSans-ExtraBold.ttf</string>
+	<string>PlusJakartaSans-ExtraBoldItalic.ttf</string>
+	</array>
 </dict>
 </plist>

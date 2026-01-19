@@ -1,5 +1,7 @@
 import UIKit
 import React
+import ZaloSDK
+import FirebaseCore
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
 
@@ -28,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       in: window,
       launchOptions: launchOptions
     )
-
+    FirebaseApp.configure()
+    ZaloSDK.sharedInstance().initialize(withAppId: "2133744713560169067")
     return true
   }
 }

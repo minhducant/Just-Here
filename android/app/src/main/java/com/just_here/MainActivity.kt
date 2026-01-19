@@ -1,6 +1,8 @@
-package com.just_here
+package com.antstudio.justhere.app
 
+import android.content.Intent
 import com.facebook.react.ReactActivity
+import com.zing.zalo.zalosdk.oauth.ZaloSDK;
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
@@ -12,6 +14,11 @@ class MainActivity : ReactActivity() {
    * rendering of the component.
    */
   override fun getMainComponentName(): String = "just_here"
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    ZaloSDK.Instance.onActivityResult(this, requestCode, resultCode, data)
+  }
 
   /**
    * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]

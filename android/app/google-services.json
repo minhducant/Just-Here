@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "915630225974",
+    "project_id": "just-ec56a",
+    "storage_bucket": "just-ec56a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915630225974:android:0ba40bbaf6c144d2417697",
+        "android_client_info": {
+          "package_name": "com.antstudio.justhere.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915630225974-k538p1mb8sschti70n9dab1286cul6dt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUffJb1plRKEO65O6uONjhMntnNQiCD4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915630225974-k538p1mb8sschti70n9dab1286cul6dt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "915630225974-u7i1crjrdva07jbbdog18kces5pi2fpe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.antstudio.justhere.app",
+                "app_store_id": "6757973231"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
