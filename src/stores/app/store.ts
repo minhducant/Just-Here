@@ -23,19 +23,15 @@ const appSlice = createSlice({
     setIsFirstUse(state, action: PayloadAction<boolean>) {
       state.isFirstUse = action.payload;
     },
-
     setTheme(state, action: PayloadAction<ThemeType>) {
       state.theme = action.payload;
     },
-
     setLanguage(state, action: PayloadAction<string>) {
       state.language = action.payload;
     },
-
     setAppVersion(state, action: PayloadAction<string>) {
       state.appVersion = action.payload;
     },
-
     resetAppState() {
       return initialState;
     },
