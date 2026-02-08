@@ -7,11 +7,11 @@ import { navigationRef } from '@navigation/rootNavigation';
 
 const Stack = createNativeStackNavigator();
 
-import HomeScreen from '@screens/home';
-import LoginScreen from '@screens/login';
-import SettingsScreen from '@screens/settings';
-import OnboardingScreen from '@screens/onboarding';
-import NotificationScreen from '@screens/notification';
+import HomeScreen from '@screens/home/home';
+import LoginScreen from '@screens/auth/login';
+import SettingsScreen from '@screens/home/settings';
+import OnboardingScreen from '@screens/auth/onboarding';
+import NotificationScreen from '@screens/home/notification';
 
 export const AppNavigation = () => {
   const dispatch = useDispatch();
