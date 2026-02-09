@@ -7,6 +7,7 @@ export interface AppState {
   theme: ThemeType;
   language: string;
   appVersion: string;
+  navigationState: 1 | 2 | 3 | 4;
 }
 
 const initialState: AppState = {
@@ -14,6 +15,7 @@ const initialState: AppState = {
   theme: 'light',
   language: 'vi',
   appVersion: '1.0.0',
+  navigationState: 1,
 };
 
 const appSlice = createSlice({
@@ -38,12 +40,7 @@ const appSlice = createSlice({
   },
 });
 
-export const {
-  setIsFirstUse,
-  setTheme,
-  setLanguage,
-  setAppVersion,
-  resetAppState,
-} = appSlice.actions;
+export const { setIsFirstUse, setTheme, setLanguage, setAppVersion, resetAppState } =
+  appSlice.actions;
 
 export default appSlice.reducer;

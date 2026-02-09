@@ -3,11 +3,10 @@ import { Platform, useColorScheme } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { getTheme } from '@/theme';
+import { getTheme } from '@/constants/theme';
 
 // ===== Screens =====
-import HomeScreen from '@/screens/HomeScreen';
-
+import HomeScreen from '@/screens/home/HomeScreen';
 
 export type BottomTabParamList = {
   Home: undefined;
@@ -18,7 +17,7 @@ export type BottomTabParamList = {
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabs() {
-  const scheme = useColorScheme(); // light | dark | null
+  const scheme = useColorScheme();
   const theme = getTheme(scheme === 'dark' ? 'dark' : 'light');
 
   return (
@@ -60,31 +59,11 @@ export default function BottomTabs() {
               iconName = 'ellipse-outline';
           }
 
-          return (
-            <Ionicons
-              name={iconName}
-              size={size ?? 22}
-              color={color}
-            />
-          );
+          return <Ionicons name={iconName} size={size ?? 22} color={color} />;
         },
       })}
     >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ tabBarLabel: 'Home' }}
-      />
-      <Tab.Screen
-        name="Search"
-        component={SearchScreen}
-        options={{ tabBarLabel: 'Search' }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{ tabBarLabel: 'Profile' }}
-      />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: 'Home' }} />
     </Tab.Navigator>
   );
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { getStorage } from '@utils/index';
-import { MAIN_DOMAIN, API_PREFIX } from '@configs/apiUrl';
+import { getStorage } from '@/utils/index';
+import { MAIN_DOMAIN, API_PREFIX } from '@/configs/apiUrl';
 
 type responseType = { mess: string; status: boolean; data: any };
 
