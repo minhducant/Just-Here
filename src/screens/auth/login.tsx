@@ -7,23 +7,19 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, View, Keyboard, TouchableOpacity } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
-import { AuthApi } from '@api/auth';
-import { showMessage, setStorage } from '@utils/index';
-import { authStyle as styles } from '@styles/auth.style';
-import DismissKeyboard from '@components/base/dismissKeyboard';
-import { IconFacebook, IconGoogle, IconZalo } from '@assets/icons/index';
+import { AuthApi } from '@/api/auth';
+import { showMessage, setStorage } from '@/utils/index';
+import { authStyle as styles } from '@/styles/auth.style';
+import DismissKeyboard from '@/components/base/dismissKeyboard';
+import { IconFacebook, IconGoogle, IconZalo } from '@/assets/icons/index';
 
 export default function LoginScreen() {
   const { t } = useTranslation();
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId:
-        '915630225974-k538p1mb8sschti70n9dab1286cul6dt.apps.googleusercontent.com',
-      iosClientId:
-        '915630225974-u7i1crjrdva07jbbdog18kces5pi2fpe.apps.googleusercontent.com',
-      offlineAccess: true,
-      forceCodeForRefreshToken: true,
+      webClientId: '915630225974-k538p1mb8sschti70n9dab1286cul6dt.apps.googleusercontent.com',
+      iosClientId: '915630225974-u7i1crjrdva07jbbdog18kces5pi2fpe.apps.googleusercontent.com',
     });
   }, []);
 
@@ -104,9 +100,7 @@ export default function LoginScreen() {
           style={styles.buttonLoginWith}
         >
           <IconGoogle />
-          <Text style={styles.buttonLoginText}>
-            {t('auth.continue_with_google')}
-          </Text>
+          <Text style={styles.buttonLoginText}>{t('auth.continue_with_google')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={onLoginFacebook}
@@ -114,9 +108,7 @@ export default function LoginScreen() {
           style={[styles.buttonLoginWith]}
         >
           <IconFacebook />
-          <Text style={styles.buttonLoginText}>
-            {t('auth.continue_with_facebook')}
-          </Text>
+          <Text style={styles.buttonLoginText}>{t('auth.continue_with_facebook')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={onLoginZalo}
@@ -124,9 +116,7 @@ export default function LoginScreen() {
           style={[styles.buttonLoginWith]}
         >
           <IconZalo />
-          <Text style={styles.buttonLoginText}>
-            {t('auth.continue_with_zalo')}
-          </Text>
+          <Text style={styles.buttonLoginText}>{t('auth.continue_with_zalo')}</Text>
         </TouchableOpacity>
       </SafeAreaView>
     </DismissKeyboard>
