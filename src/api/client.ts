@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { getStorage } from '@/utils/index';
-import { MAIN_DOMAIN, API_PREFIX } from '@/configs/apiUrl';
+import { MAIN_DOMAIN, API_PREFIX } from '@/constants/api';
 
 type responseType = { mess: string; status: boolean; data: any };
 
@@ -37,12 +37,9 @@ app.interceptors.response.use(
 );
 
 export const client = {
-  post: (url: string, ...rest: any) =>
-    app.post<any, responseType>(url, ...rest),
+  post: (url: string, ...rest: any) => app.post<any, responseType>(url, ...rest),
   get: (url: string, ...rest: any) => app.get<any, responseType>(url, ...rest),
   put: (url: string, ...rest: any) => app.put<any, responseType>(url, ...rest),
-  patch: (url: string, ...rest: any) =>
-    app.patch<any, responseType>(url, ...rest),
-  delete: (url: string, ...rest: any) =>
-    app.delete<any, responseType>(url, ...rest),
+  patch: (url: string, ...rest: any) => app.patch<any, responseType>(url, ...rest),
+  delete: (url: string, ...rest: any) => app.delete<any, responseType>(url, ...rest),
 };
