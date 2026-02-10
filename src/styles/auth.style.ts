@@ -1,34 +1,43 @@
+import { ViewStyle, TextStyle } from 'react-native';
 import normalize from 'react-native-normalize';
 
-import color from '@styles/color';
-import themeStyle from '@styles/theme.style';
+import { Theme } from '@/constants/theme';
 
-export const authStyle: any = {
+type AuthStyles = {
+  container: ViewStyle;
+  copyRight: TextStyle;
+  buttonLoginWith: ViewStyle;
+  buttonLoginText: TextStyle;
+};
+
+export const authStyles = (theme: Theme): AuthStyles => ({
   container: {
     flex: 1,
-    backgroundColor: color.WHITE,
+    backgroundColor: theme.colors.background,
   },
   copyRight: {
-    fontFamily: themeStyle.FONT_FAMILY,
-    fontSize: 14,
+    fontFamily: theme.typography.fontFamily.REGULAR,
+    fontSize: theme.typography.fontSize.SM,
+    color: theme.colors.textMuted,
   },
   buttonLoginWith: {
     height: normalize(50),
     borderWidth: 1,
+    borderColor: theme.colors.border,
+    borderRadius: normalize(10),
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: color.SILVER,
-    borderRadius: normalize(10),
-    marginHorizontal: normalize(5),
     flexDirection: 'row',
     width: '80%',
     alignSelf: 'center',
     marginTop: normalize(16),
+    marginHorizontal: normalize(5),
+    backgroundColor: theme.colors.surface,
   },
   buttonLoginText: {
-    fontFamily: themeStyle.FONT_FAMILY,
-    fontSize: 14,
-    color: color.BLACK,
+    fontFamily: theme.typography.fontFamily.MEDIUM,
+    fontSize: theme.typography.fontSize.SM,
+    color: theme.colors.text,
     marginLeft: normalize(10),
   },
-};
+});

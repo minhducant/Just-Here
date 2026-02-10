@@ -41,6 +41,7 @@ export const FontFamily = {
   REGULAR: 'PlusJakartaSans-Regular',
   SEMIBOLD: 'PlusJakartaSans-SemiBold',
   BOLD: 'PlusJakartaSans-Bold',
+  MEDIUM: 'PlusJakartaSans-Medium',
 };
 
 export const FontSize = {
@@ -78,6 +79,7 @@ export const lightTheme = {
     danger: Colors.CRIMSON,
     warning: Colors.ORANGE,
     success: Colors.MANTIS,
+    text: Colors.BLACK,
   },
 };
 
@@ -97,6 +99,7 @@ export const darkTheme = {
     danger: Colors.CRIMSON,
     warning: Colors.ORANGE,
     success: Colors.PASTEL_GREEN,
+    text: Colors.WHITE,
   },
 };
 
@@ -112,5 +115,7 @@ export const getTheme = (mode: ThemeMode) => {
     typography,
   };
 };
+
+export type Theme = ReturnType<typeof getTheme>;
 
 export type AppTheme = ReturnType<typeof getTheme>;

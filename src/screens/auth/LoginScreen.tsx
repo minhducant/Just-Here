@@ -4,17 +4,21 @@ import { login } from 'react-native-zalo-kit';
 import { useTranslation } from 'react-i18next';
 import FastImage from 'react-native-fast-image';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text, View, Keyboard, TouchableOpacity } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { Text, View, Keyboard, TouchableOpacity, useColorScheme } from 'react-native';
 
 import { AuthApi } from '@/api/auth';
+import { getTheme } from '@/constants/theme';
 import { showMessage, setStorage } from '@/utils/index';
-import { authStyle as styles } from '@/styles/auth.style';
+import { authStyles } from '@/styles/auth.style';
 import DismissKeyboard from '@/components/base/dismissKeyboard';
 import { IconFacebook, IconGoogle, IconZalo } from '@/assets/icons/index';
 
 export default function LoginScreen() {
   const { t } = useTranslation();
+  const scheme = useColorScheme();
+  const theme = getTheme(scheme === 'dark' ? 'dark' : 'light');
+  const styles = authStyles(theme);
 
   useEffect(() => {
     GoogleSignin.configure({
