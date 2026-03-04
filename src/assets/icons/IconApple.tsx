@@ -8,7 +8,7 @@ const SvgComponent = () => {
   const fillColor = colorScheme === 'dark' ? '#FFFFFF' : '#000000';
 
   return (
-    <Svg width={normalize(34)} height={normalize(34)} viewBox="-1.5 0 20 20">
+    <Svg width={normalize(25)} height={normalize(25)} viewBox="-1.5 0 20 20">
       <Path
         fill={fillColor}
         fillRule="evenodd"

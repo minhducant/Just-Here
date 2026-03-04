@@ -16,11 +16,11 @@ export class AuthApi {
     const response = await client.post(ApiUrl.auth.login_google, params);
     return response;
   }
-  static async LoginZalo(params: AppApiTypeRequest.LoginGoogle) {
+  static async LoginZalo(params: AppApiTypeRequest.LoginZalo) {
     const response = await client.post(ApiUrl.auth.login_zalo, params);
     return response;
   }
-  static async LoginApple(params: AppApiTypeRequest.LoginGoogle) {
+  static async LoginApple(params: AppApiTypeRequest.LoginApple) {
     const response = await client.post(ApiUrl.auth.login_apple, params);
     return response;
   }

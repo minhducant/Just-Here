@@ -80,6 +80,7 @@ export const lightTheme = {
     warning: Colors.ORANGE,
     success: Colors.MANTIS,
     text: Colors.BLACK,
+    gray: Colors.GRAYCHATEAU,
   },
 };
 
@@ -100,6 +101,7 @@ export const darkTheme = {
     warning: Colors.ORANGE,
     success: Colors.PASTEL_GREEN,
     text: Colors.WHITE,
+    gray: Colors.GRAYCHATEAU,
   },
 };
 

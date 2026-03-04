@@ -5,8 +5,8 @@ import normalize from 'react-native-normalize';
 function SvgComponent() {
   return (
     <Svg
-      width={normalize(34)}
-      height={normalize(34)}
+      width={normalize(26)}
+      height={normalize(26)}
       viewBox="0 0 16 16"
       fill="none">
       <Path

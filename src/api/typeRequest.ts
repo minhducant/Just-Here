@@ -12,6 +12,12 @@ export namespace AppApiTypeRequest {
   export interface LoginGoogle {
     accessToken: string;
   }
+  export interface LoginZalo {
+    accessToken: string;
+  }
+  export interface LoginApple {
+    identityToken: string;
+  }
   export interface ForgotPassword {
     email: string;
   }

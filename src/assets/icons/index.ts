@@ -10,6 +10,7 @@ import IconRating from './IconRating';
 import IconReminder from './IconReminder';
 import IconBug from './IconBug';
 import IconLogout from './IconLogout';
+import IconApple from './IconApple';
 
 export {
   IconZalo,
@@ -24,4 +25,5 @@ export {
   IconReminder,
   IconBug,
   IconLogout,
+  IconApple,
 };

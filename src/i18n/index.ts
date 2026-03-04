@@ -18,7 +18,7 @@ const languageDetector: any = {
       userLang ||
       DataLanguage.find((item: { value: any }) => item.value === deviceLang)
         ?.value ||
-      'vi';
+      'en';
     callback(language);
   },
   cacheUserLanguage: () => {},
@@ -36,7 +36,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'vi',
+    lng: 'en',
     fallbackLng: fallbackLanguage.languageTag,
     interpolation: {
       escapeValue: false,
