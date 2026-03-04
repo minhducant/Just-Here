@@ -1,4 +1,4 @@
-import { ApiUrl } from '@configs/apiUrl';
-import { client } from '@configs/axiosConfig';
+import { ApiUrl } from '@/constants/api';
+import { client } from '@/api/apiClient';
 
 export class HomeApi {}

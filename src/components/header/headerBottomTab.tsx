@@ -12,7 +12,7 @@ import normalize from 'react-native-normalize';
 
 import Colors from '@styles/color';
 import theme from '@styles/theme.style';
-import {openDrawer, navigate} from '@navigation/rootNavigation';
+import { navigate} from '@/navigation/rootNavigation';
 
 interface HeaderProps {
   title: string;

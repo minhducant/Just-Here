@@ -1,32 +1,8 @@
-import {isString} from 'underscore';
+import { isString } from 'underscore';
+import * as Keychain from 'react-native-keychain';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type keyStore = string;
-
-const getAccessToken = async () => {
-  try {
-    const data: any = await AsyncStorage.getItem('persist:root');
-    const jsonObject = JSON.parse(data);
-    const accessToken = JSON.parse(jsonObject.Authentication).accessToken;
-    return accessToken;
-  } catch (error) {
-    console.log('Error retrieving AccessToken:', error);
-    return '';
-  }
-};
-
-const getLanguage = async () => {
-  try {
-    const data: any = await AsyncStorage.getItem('persist:root');
-    const jsonObject = JSON.parse(data);
-    const config = JSON.parse(jsonObject.Config);
-    const language = config.language;
-    return language;
-  } catch (error) {
-    console.log('Error retrieving Language', error);
-    return '';
-  }
-};
 
 const setStorage = (key: keyStore, value: any) => {
   return AsyncStorage.setItem(key, JSON.stringify(value));
@@ -44,4 +20,4 @@ const multiRemove = async (list: keyStore[]) => {
   return AsyncStorage.multiRemove(list);
 };
 
-export {getAccessToken, getLanguage, setStorage, getStorage, multiRemove};
+export { setStorage, getStorage, multiRemove };
