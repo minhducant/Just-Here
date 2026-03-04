@@ -1,46 +1,43 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type ThemeType = 'light' | 'dark';
+export type LanguageType = 'vi' | 'en' | 'ko';
 
 export interface AppState {
-  isFirstUse: boolean;
   theme: ThemeType;
-  language: string;
   appVersion: string;
-  navigationState: 1 | 2 | 3 | 4;
+  language: LanguageType;
+  hasCompletedOnboarding: boolean;
 }
 
 const initialState: AppState = {
-  isFirstUse: true,
   theme: 'light',
   language: 'vi',
   appVersion: '1.0.0',
-  navigationState: 1,
+  hasCompletedOnboarding: false,
 };
 
 const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setIsFirstUse(state, action: PayloadAction<boolean>) {
-      state.isFirstUse = action.payload;
+    setHasCompletedOnboarding(state, action: PayloadAction<boolean>) {
+      state.hasCompletedOnboarding = action.payload;
     },
     setTheme(state, action: PayloadAction<ThemeType>) {
       state.theme = action.payload;
     },
-    setLanguage(state, action: PayloadAction<string>) {
+    setLanguage(state, action: PayloadAction<LanguageType>) {
       state.language = action.payload;
     },
     setAppVersion(state, action: PayloadAction<string>) {
       state.appVersion = action.payload;
     },
-    resetAppState() {
-      return initialState;
-    },
+    resetAppState: () => initialState,
   },
 });
 
-export const { setIsFirstUse, setTheme, setLanguage, setAppVersion, resetAppState } =
+export const { setTheme, setLanguage, setAppVersion, resetAppState, setHasCompletedOnboarding } =
   appSlice.actions;
 
 export default appSlice.reducer;

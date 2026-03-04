@@ -2,7 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { USER_LANG, getDeviceLang, DataLanguage } from '@utils/deviceLang';
+import { USER_LANG, getDeviceLang, DataLanguage } from '@/utils/deviceLang';
 
 import en from './en.json';
 import vi from './vi.json';
