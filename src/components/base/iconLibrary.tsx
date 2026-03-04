@@ -52,9 +52,8 @@ export const IconLibrary: React.FC<IconLibraryProps> = ({
       name={name}
       size={size}
       color={color}
-      style={style as any}
       onPress={onPress}
-      activeOpacity={activeOpacity}
+      style={[style, { opacity: activeOpacity }] as any}
       disabled={typeof onPress === 'function' ? false : true}
     />
   );
