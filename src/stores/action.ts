@@ -3,11 +3,19 @@ import {
   setLoading,
   setLanguage,
   setAppVersion,
+  setIsLoggedIn,
   setHasCompletedOnboarding,
   resetAppState,
 } from './app/store';
 
-import { setUser, setTokens, updateUser, logout } from './user/store';
+import {
+  logout,
+  setUser,
+  setStreak,
+  updateUser,
+  setNotifyCount,
+  setLastCheckinDate,
+} from './user/store';
 
 export const actions = {
   app: {
@@ -15,13 +23,16 @@ export const actions = {
     setLoading,
     setLanguage,
     setAppVersion,
+    setIsLoggedIn,
     setHasCompletedOnboarding,
     resetAppState,
   },
   user: {
-    setUser,
-    setTokens,
-    updateUser,
     logout,
+    setUser,
+    setStreak,
+    updateUser,
+    setNotifyCount,
+    setLastCheckinDate,
   },
 };

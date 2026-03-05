@@ -11,8 +11,8 @@ import { Text, View, Platform, StatusBar, TouchableOpacity, useColorScheme } fro
 import { AuthApi } from '@/api/auth';
 import { actions } from '@/stores/action';
 import { getTheme } from '@/constants/theme';
-import { showMessage } from '@/utils/index';
 import { authStyles } from '@/styles/auth.style';
+import { showMessage, setAccessToken } from '@/utils/';
 import DismissKeyboard from '@/components/base/dismissKeyboard';
 import { IconGoogle, IconZalo, IconApple } from '@/assets/icons/index';
 
@@ -53,6 +53,7 @@ export default function LoginScreen() {
         showMessage.fail(t('auth.google_login_failed'));
         return;
       }
+      console.log('Google Sign-In data: ', JSON.stringify(data, null, 2));
     } catch (error) {
       if (__DEV__) {
         console.log('[App] Google Login: ', error);
@@ -69,21 +70,29 @@ export default function LoginScreen() {
         requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
       });
       const { identityToken } = appleAuthRequestResponse;
-      console.log('Apple identity token: ', identityToken);
       if (!identityToken) {
         showMessage.fail(t('auth.apple_login_failed'));
         return;
       }
-      // const dataLogin = await AuthApi.LoginApple({ identityToken });
-      // console.log('Apple login data: ', dataLogin);
+      dispatch(actions.app.setLoading(true));
+      const { code, data } = await AuthApi.LoginApple({ identityToken });
+      if (code !== 200) {
+        showMessage.fail(t('auth.apple_login_failed'));
+        return;
+      }
+      await setAccessToken(data.accessToken);
+      dispatch(actions.app.setIsLoggedIn(true));
+      showMessage.success(t('auth.apple_login_success'));
     } catch (error: any) {
       if (__DEV__) {
         console.log('[App] Apple Login: ', error);
       }
       showMessage.fail(t('auth.apple_login_failed'));
     } finally {
+      dispatch(actions.app.setLoading(false));
     }
   };
+
   return (
     <DismissKeyboard>
       <SafeAreaView style={styles.container}>

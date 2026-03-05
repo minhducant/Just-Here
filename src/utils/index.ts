@@ -8,6 +8,7 @@ import {
   deleteAccessToken,
 } from './storage';
 import { showMessage } from './toast';
+import { logOut, deleteAccount, useAccount, useAsyncApp } from './acount';
 
 export {
   showMessage,
@@ -18,4 +19,8 @@ export {
   setAccessToken,
   getAccessToken,
   deleteAccessToken,
+  logOut,
+  deleteAccount,
+  useAccount,
+  useAsyncApp,
 };

@@ -4,8 +4,9 @@ import notifee from '@notifee/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { useAsyncApp } from '@/utils/';
 import BottomTabs from '@/navigation/bottomTabs';
-import {initNotification} from '@/utils/notification';
+import { initNotification } from '@/utils/notification';
 import { navigationRef } from '@/navigation/rootNavigation';
 
 //--------------------Screen---------------------//
@@ -28,13 +29,16 @@ const AuthStack = () => (
   </AuthStackNavigator.Navigator>
 );
 
-const AppStack = () => (
-  <AppStackNavigator.Navigator screenOptions={screenOptions}>
-    <AppStackNavigator.Screen name="Tabs" component={BottomTabs} />
-    <AppStackNavigator.Screen name="Settings" component={SettingsScreen} />
-    <AppStackNavigator.Screen name="Notification" component={NotificationScreen} />
-  </AppStackNavigator.Navigator>
-);
+const AppStack = () => {
+  useAsyncApp();
+  return (
+    <AppStackNavigator.Navigator screenOptions={screenOptions}>
+      <AppStackNavigator.Screen name="Tabs" component={BottomTabs} />
+      <AppStackNavigator.Screen name="Settings" component={SettingsScreen} />
+      <AppStackNavigator.Screen name="Notification" component={NotificationScreen} />
+    </AppStackNavigator.Navigator>
+  );
+};
 
 export const AppNavigation = () => {
   const { hasCompletedOnboarding, isLoggedIn } = useSelector((state: any) => state.app);

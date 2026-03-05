@@ -7,6 +7,7 @@ import { getAccessToken, showMessage } from '@/utils/';
 type ApiResponse<T = any> = {
   mess: string;
   status: boolean;
+  code: number | string;
   data: T;
 };
 
