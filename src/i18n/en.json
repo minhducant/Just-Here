@@ -9,5 +9,16 @@
     "continue_with_telegram": "Continue with Telegram",
     "continue_with_line": "Continue with Line",
     "continue_with_kakaotalk": "Continue with KakaoTalk"
+  },
+  "error": {
+    "default": "An error occurred. Please try again later.",
+    "google": "Google login failed. Please try again.",
+    "facebook": "Facebook login failed. Please try again.",
+    "zalo": "Zalo login failed. Please try again.",
+    "apple": "Apple login failed. Please try again.",
+    "x": "X login failed. Please try again.",
+    "telegram": "Telegram login failed. Please try again.",
+    "line": "Line login failed. Please try again.",
+    "kakaotalk": "KakaoTalk login failed. Please try again."
   }
 }

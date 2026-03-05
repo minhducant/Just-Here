@@ -9,5 +9,16 @@
     "continue_with_telegram": "Tiếp tục với Telegram",
     "continue_with_line": "Tiếp tục với Line",
     "continue_with_kakaotalk": "Tiếp tục với KakaoTalk"
+  },
+  "error": {
+    "default": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+    "google": "Đăng nhập Google thất bại. Vui lòng thử lại.",
+    "facebook": "Đăng nhập Facebook thất bại. Vui lòng thử lại.",
+    "zalo": "Đăng nhập Zalo thất bại. Vui lòng thử lại.",
+    "apple": "Đăng nhập Apple thất bại. Vui lòng thử lại.",
+    "x": "Đăng nhập X thất bại. Vui lòng thử lại.",
+    "telegram": "Đăng nhập Telegram thất bại. Vui lòng thử lại.",
+    "line": "Đăng nhập Line thất bại. Vui lòng thử lại.",
+    "kakaotalk": "Đăng nhập KakaoTalk thất bại. Vui lòng thử lại."
   }
 }

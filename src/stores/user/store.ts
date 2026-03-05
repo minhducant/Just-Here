@@ -12,7 +12,6 @@ export interface UserState {
   accessToken: string | null;
   refreshToken: string | null;
   isLoggedIn: boolean;
-  isLoading: boolean;
 }
 
 const initialState: UserState = {
@@ -20,7 +19,6 @@ const initialState: UserState = {
   accessToken: null,
   refreshToken: null,
   isLoggedIn: false,
-  isLoading: false,
 };
 
 const userSlice = createSlice({
@@ -35,9 +33,6 @@ const userSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken ?? null;
     },
-    setLoading(state, action: PayloadAction<boolean>) {
-      state.isLoading = action.payload;
-    },
     updateUser(state, action: PayloadAction<Partial<User>>) {
       if (state.user) {
         state.user = { ...state.user, ...action.payload };
@@ -49,6 +44,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, setTokens, setLoading, updateUser, logout } = userSlice.actions;
+export const { setUser, setTokens, updateUser, logout } = userSlice.actions;
 
 export default userSlice.reducer;

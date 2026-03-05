@@ -1,7 +1,8 @@
 import axios, { InternalAxiosRequestConfig } from 'axios';
-import * as Keychain from 'react-native-keychain';
 
+import { t } from 'i18next';
 import { MAIN_DOMAIN, API_PREFIX } from '@/constants/api';
+import { getAccessToken, showMessage } from '@/utils/';
 
 type ApiResponse<T = any> = {
   mess: string;
@@ -18,10 +19,9 @@ let accessToken: string | null = null;
 
 export const loadAccessToken = async () => {
   try {
-    const credentials = await Keychain.getGenericPassword();
-    accessToken = credentials ? credentials.password : null;
+    accessToken = await getAccessToken();
   } catch (error) {
-    console.log('Keychain error:', error);
+    showMessage.fail(t('error.default'));
   }
 };
 
@@ -39,6 +39,7 @@ app.interceptors.request.use(
 app.interceptors.response.use(
   response => response.data,
   error => {
+    showMessage.fail(t('error.default'));
     return Promise.reject({
       status: error?.response?.status,
       message: error?.response?.data?.info?.message || error.message,

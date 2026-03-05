@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect, useCallback} from 'react';
+import React, { useState, useLayoutEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -18,14 +18,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import normalize from 'react-native-normalize';
 
-import {
-  IconClose,
-  HelpToast,
-  FailToast,
-  SuccessToast,
-  WarningToast,
-} from '@assets/icons';
-import {toastStyle as styles} from '@styles/toast.style';
+import { toastStyle as styles } from '@/styles/toast.style';
+import { IconClose, HelpToast, FailToast, SuccessToast, WarningToast } from '@/assets/icons';
 
 const TOAST_DURATION = 2000;
 
@@ -38,7 +32,7 @@ const ToastMessage = () => {
   const showToastMessage = useCallback(
     (options: any) => {
       setToastOptions(options);
-      setShowingState(true); 
+      setShowingState(true);
       toastBottomAnimation.value = withSequence(
         withTiming(BOTTOM_VALUE),
         withDelay(
@@ -55,20 +49,14 @@ const ToastMessage = () => {
   );
 
   useLayoutEffect(() => {
-    const toastListener = DeviceEventEmitter.addListener(
-      'SHOW_TOAST_MESSAGE',
-      showToastMessage,
-    );
+    const toastListener = DeviceEventEmitter.addListener('SHOW_TOAST_MESSAGE', showToastMessage);
     return () => {
       toastListener.remove();
     };
   });
 
   useLayoutEffect(() => {
-    const toastListener = DeviceEventEmitter.addListener(
-      'HIDE_TOAST_MESSAGE',
-      hideToast,
-    );
+    const toastListener = DeviceEventEmitter.addListener('HIDE_TOAST_MESSAGE', hideToast);
     return () => {
       toastListener.remove();
     };
@@ -82,15 +70,11 @@ const ToastMessage = () => {
 
   const hideToast = useCallback(() => {
     InteractionManager.runAfterInteractions(() => {
-      toastBottomAnimation.value = withTiming(
-        normalize(-150),
-        undefined,
-        finished => {
-          if (finished) {
-            runOnJS(setShowingState)(false); // Sử dụng runOnJS để cập nhật state
-          }
-        },
-      );
+      toastBottomAnimation.value = withTiming(normalize(-150), undefined, finished => {
+        if (finished) {
+          runOnJS(setShowingState)(false); // Sử dụng runOnJS để cập nhật state
+        }
+      });
     });
   }, [toastBottomAnimation]);
 
@@ -105,10 +89,8 @@ const ToastMessage = () => {
   });
 
   return (
-    <Animated.View
-      {...panResponder.panHandlers}
-      style={[styles.toastContainer, animatedTopStyles]}>
-      {showingState && ( // Hiển thị toast dựa trên showingState
+    <Animated.View {...panResponder.panHandlers} style={[styles.toastContainer, animatedTopStyles]}>
+      {showingState && (
         <>
           {toastOptions.type === 'success' ? (
             <SuccessToast />
@@ -124,19 +106,16 @@ const ToastMessage = () => {
               {toastOptions.type === 'success'
                 ? 'Well done!'
                 : toastOptions.type === 'fail'
-                ? 'Oh snap!'
-                : toastOptions.type === 'warning'
-                ? 'Warning!'
-                : 'Hi there!'}
+                  ? 'Oh snap!'
+                  : toastOptions.type === 'warning'
+                    ? 'Warning!'
+                    : 'Hi there!'}
             </Text>
             <Text style={styles.toastMessage} numberOfLines={2}>
               {toastOptions.message}
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={hideToast}
-            activeOpacity={0.7}
-            style={styles.closeIcon}>
+          <TouchableOpacity onPress={hideToast} activeOpacity={0.7} style={styles.closeIcon}>
             <IconClose />
           </TouchableOpacity>
         </>

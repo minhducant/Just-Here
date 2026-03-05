@@ -9,14 +9,16 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { Text, View, Platform, StatusBar, TouchableOpacity, useColorScheme } from 'react-native';
 
 import { AuthApi } from '@/api/auth';
+import { actions } from '@/stores/action';
 import { getTheme } from '@/constants/theme';
-import { showMessage, setStorage } from '@/utils/index';
+import { showMessage } from '@/utils/index';
 import { authStyles } from '@/styles/auth.style';
 import DismissKeyboard from '@/components/base/dismissKeyboard';
-import { IconFacebook, IconGoogle, IconZalo, IconApple } from '@/assets/icons/index';
+import { IconGoogle, IconZalo, IconApple } from '@/assets/icons/index';
 
 export default function LoginScreen() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const scheme = useColorScheme();
   const theme = getTheme(scheme === 'dark' ? 'dark' : 'light');
   const styles = authStyles(theme);
@@ -38,6 +40,8 @@ export default function LoginScreen() {
       if (__DEV__) {
         console.log('[App] Zalo Login: ', error);
       }
+      showMessage.fail(t('auth.zalo_login_failed'));
+    } finally {
     }
   };
 
@@ -46,14 +50,15 @@ export default function LoginScreen() {
     try {
       const data = await GoogleSignin.signIn();
       if (!data) {
-        showMessage.fail('Đăng nhập thất bại, vui lòng thử lại!');
+        showMessage.fail(t('auth.google_login_failed'));
         return;
       }
     } catch (error) {
       if (__DEV__) {
         console.log('[App] Google Login: ', error);
       }
-      return;
+      showMessage.fail(t('auth.google_login_failed'));
+    } finally {
     }
   };
 
@@ -63,23 +68,20 @@ export default function LoginScreen() {
         requestedOperation: appleAuth.Operation.LOGIN,
         requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
       });
-      const { identityToken, email, fullName, user } = appleAuthRequestResponse;
+      const { identityToken } = appleAuthRequestResponse;
+      console.log('Apple identity token: ', identityToken);
       if (!identityToken) {
-        showMessage.fail('Apple Sign-In thất bại');
+        showMessage.fail(t('auth.apple_login_failed'));
         return;
       }
-      console.log('Apple user:', user, email, fullName);
-      console.log('Apple token:', identityToken);
-      const dataLogin = await AuthApi.LoginApple({ identityToken });
-      console.log('Apple login data: ', dataLogin);
+      // const dataLogin = await AuthApi.LoginApple({ identityToken });
+      // console.log('Apple login data: ', dataLogin);
     } catch (error: any) {
-      if (error.code === appleAuth.Error.CANCELED) {
-        return;
-      }
       if (__DEV__) {
         console.log('[App] Apple Login: ', error);
       }
-      showMessage.fail('Đăng nhập Apple thất bại');
+      showMessage.fail(t('auth.apple_login_failed'));
+    } finally {
     }
   };
   return (
