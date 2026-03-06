@@ -6,7 +6,6 @@ import { AppApiTypeRequest } from '@/api/typeRequest';
 export class AuthApi {
   static async getUserInfo(params: any) {
     const response = await client.get(ApiUrl.users.me + extraParams(params));
-    console.log('getUserInfo response: ', JSON.stringify(response, null, 2));
     return response.data;
   }
   static async LoginFacebook(params: AppApiTypeRequest.LoginFacebook) {

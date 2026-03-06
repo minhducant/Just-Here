@@ -7,8 +7,8 @@ import { getTheme } from '@/constants/theme';
 import { navigationStyles } from '@/styles/navigation.style';
 
 import HomeScreen from '@/screens/home/HomeScreen';
+import UserScreen from '@/screens/user/UserScreen';
 import CalendarScreen from '@/screens/home/CalendarScreen';
-import SettingsScreen from '@/screens/home/SettingsScreen';
 
 export type BottomTabParamList = {
   Home: undefined;
@@ -49,7 +49,7 @@ export default function BottomTabs() {
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Search" component={CalendarScreen} />
-      <Tab.Screen name="Profile" component={SettingsScreen} />
+      <Tab.Screen name="Profile" component={UserScreen} />
     </Tab.Navigator>
   );
 }

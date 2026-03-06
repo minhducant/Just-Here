@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { t } from 'i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { AuthApi } from '@/api/auth';
 import { store } from '@/stores/index';
@@ -41,24 +41,22 @@ const useAccount = () => {
 };
 
 const useAsyncApp = () => {
-  const dispatch = useDispatch();
   useEffect(() => {
-    const fetchData = async () => {
-      dispatch(actions.app.setLoading(true));
-      try {
-        const actions = [getUserInfo()];
-        await Promise.all(actions.map(dispatch));
-        console.log('AsyncApp: User info fetched successfully');
-      } catch (error) {
-        if (__DEV__) {
-          console.error('AsyncApp Error:', error);
+    const bootstrap = async () => {
+      store.dispatch(actions.app.setLoading(true));
+      const tasks = [store.dispatch(getUserInfo() as any)];
+      const results = await Promise.allSettled(tasks);
+      results.forEach(result => {
+        if (result.status === 'rejected') {
+          if (__DEV__) {
+            console.error('Bootstrap API Error:', result.reason);
+          }
         }
-      } finally {
-        dispatch(actions.app.setLoading(false));
-      }
+      });
+      store.dispatch(actions.app.setLoading(false));
     };
-    fetchData();
-  }, [dispatch]);
+    bootstrap();
+  }, []);
   return null;
 };
 

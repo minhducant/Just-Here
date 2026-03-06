@@ -30,7 +30,6 @@ export const getFCMToken = async () => {
   const token = await getToken(messaging);
   fcmToken = token;
   if (token) {
-    console.log('FCM TOKEN:', token);
     sendTokenToBackend(token);
   }
   return token;

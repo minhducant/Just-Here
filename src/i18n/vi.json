@@ -20,5 +20,29 @@
     "telegram": "Đăng nhập Telegram thất bại. Vui lòng thử lại.",
     "line": "Đăng nhập Line thất bại. Vui lòng thử lại.",
     "kakaotalk": "Đăng nhập KakaoTalk thất bại. Vui lòng thử lại."
+  },
+  "settings": {
+    "account": "Tài khoản",
+    "notifications": "Thông báo",
+    "privacy": "Quyền riêng tư",
+    "security": "Bảo mật",
+    "appearance": "Giao diện",
+    "language": "Ngôn ngữ",
+    "about": "Giới thiệu",
+    "logout": "Đăng xuất",
+    "dark_mode": "Chế độ tối",
+    "face_id": "Face ID",
+    "touch_id": "Touch ID",
+    "change_password": "Đổi mật khẩu",
+    "delete_account": "Xóa tài khoản",
+    "version": "Phiên bản",
+    "terms_of_service": "Điều khoản dịch vụ",
+    "privacy_policy": "Chính sách bảo mật",
+    "contact_support": "Liên hệ hỗ trợ",
+    "resources": "Tài nguyên",
+    "request_feature": "Yêu cầu tính năng",
+    "report_bug": "Báo lỗi",
+    "rate_app": "Đánh giá ứng dụng",
+    "reminder": "Nhắc nhở"
   }
 }

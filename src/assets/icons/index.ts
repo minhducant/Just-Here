@@ -11,6 +11,8 @@ import IconReminder from './IconReminder';
 import IconBug from './IconBug';
 import IconLogout from './IconLogout';
 import IconApple from './IconApple';
+import IconClose from './IconClose';
+import IconLanguage from './IconLanguage';
 
 export {
   IconZalo,
@@ -26,4 +28,6 @@ export {
   IconBug,
   IconLogout,
   IconApple,
+  IconClose,
+  IconLanguage,
 };

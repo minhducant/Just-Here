@@ -5,10 +5,10 @@ import { MAIN_DOMAIN, API_PREFIX } from '@/constants/api';
 import { getAccessToken, showMessage } from '@/utils/';
 
 type ApiResponse<T = any> = {
+  data: T;
   mess: string;
   status: boolean;
   code: number | string;
-  data: T;
 };
 
 export const app = axios.create({
@@ -16,33 +16,26 @@ export const app = axios.create({
   timeout: 30000,
 });
 
-let accessToken: string | null = null;
-
-export const loadAccessToken = async () => {
-  try {
-    accessToken = await getAccessToken();
-  } catch (error) {
-    showMessage.fail(t('error.default'));
-  }
-};
-
 app.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    if (accessToken) {
+  async (config: InternalAxiosRequestConfig) => {
+    const token = await getAccessToken();
+    if (token) {
       config.headers = config.headers ?? {};
-      config.headers.Authorization = `Bearer ${accessToken}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
   error => Promise.reject(error),
 );
-
 app.interceptors.response.use(
   response => response.data,
   error => {
+    if (__DEV__) {
+      console.error('API Error:', error);
+    }
     showMessage.fail(t('error.default'));
     return Promise.reject({
-      status: error?.response?.status,
+      status: error?.response?.status || false,
       message: error?.response?.data?.info?.message || error.message,
       data: error?.response?.data,
     });

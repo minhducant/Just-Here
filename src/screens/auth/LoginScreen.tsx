@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from 'react-native-zalo-kit';
 import { useTranslation } from 'react-i18next';
 import FastImage from 'react-native-fast-image';
+import { login as loginZalo } from 'react-native-zalo-kit';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import appleAuth from '@invertase/react-native-apple-authentication';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -32,16 +32,25 @@ export default function LoginScreen() {
 
   const onLoginZalo = async () => {
     try {
-      const oauthCode: any = await login('AUTH_VIA_APP_OR_WEB');
+      const oauthCode: any = await loginZalo('AUTH_VIA_APP_OR_WEB');
       let accessToken: any = oauthCode.accessToken;
-      const dataLogin = await AuthApi.LoginZalo({ accessToken });
-      console.log('Zalo login data: ', dataLogin);
+      console.log('Zalo OAuth code: ', oauthCode);
+      const { code, data } = await AuthApi.LoginZalo({ accessToken });
+      console.log('Zalo Login response: ', { code, data });
+      dispatch(actions.app.setLoading(true));
+      if (code !== 200) {
+        showMessage.fail(t('auth.zalo_login_failed'));
+        return;
+      }
+      await setAccessToken(data.accessToken);
+      dispatch(actions.app.setIsLoggedIn(true));
     } catch (error) {
       if (__DEV__) {
-        console.log('[App] Zalo Login: ', error);
+        console.error('[App] Zalo Login: ', error);
       }
       showMessage.fail(t('auth.zalo_login_failed'));
     } finally {
+      dispatch(actions.app.setLoading(false));
     }
   };
 
@@ -56,7 +65,7 @@ export default function LoginScreen() {
       console.log('Google Sign-In data: ', JSON.stringify(data, null, 2));
     } catch (error) {
       if (__DEV__) {
-        console.log('[App] Google Login: ', error);
+        console.error('[App] Google Login: ', error);
       }
       showMessage.fail(t('auth.google_login_failed'));
     } finally {
@@ -82,10 +91,9 @@ export default function LoginScreen() {
       }
       await setAccessToken(data.accessToken);
       dispatch(actions.app.setIsLoggedIn(true));
-      showMessage.success(t('auth.apple_login_success'));
     } catch (error: any) {
       if (__DEV__) {
-        console.log('[App] Apple Login: ', error);
+        console.error('[App] Apple Login: ', error);
       }
       showMessage.fail(t('auth.apple_login_failed'));
     } finally {

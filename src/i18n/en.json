@@ -20,5 +20,29 @@
     "telegram": "Telegram login failed. Please try again.",
     "line": "Line login failed. Please try again.",
     "kakaotalk": "KakaoTalk login failed. Please try again."
+  },
+  "settings": {
+    "account": "Account",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "security": "Security",
+    "appearance": "Appearance",
+    "language": "Language",
+    "about": "About",
+    "logout": "Logout",
+    "dark_mode": "Dark Mode",
+    "face_id": "Face ID",
+    "touch_id": "Touch ID",
+    "change_password": "Change Password",
+    "delete_account": "Delete Account",
+    "version": "Version",
+    "terms_of_service": "Terms of Service",
+    "privacy_policy": "Privacy Policy",
+    "contact_support": "Contact Support",
+    "resources": "Resources",
+    "request_feature": "Request a feature",
+    "report_bug": "Report a bug",
+    "rate_app": "Rate the app",
+    "reminder": "Reminder"
   }
 }

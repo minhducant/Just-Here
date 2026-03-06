@@ -1,16 +1,11 @@
 import React from 'react';
-import Entypo from 'react-native-vector-icons/Entypo';
-import Feather from 'react-native-vector-icons/Feather';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Octicons from 'react-native-vector-icons/Octicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Ionicons } from '@react-native-vector-icons/ionicons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons';
+
+const iconLibraries = {
+  Ionicons,
+  MaterialIcons,
+};
 
 interface IconLibraryProps {
   size?: number;
@@ -21,21 +16,6 @@ interface IconLibraryProps {
   onPress?: (event: Event) => void;
   library?: keyof typeof iconLibraries;
 }
-
-const iconLibraries = {
-  Entypo: Entypo,
-  Feather: Feather,
-  Ionicons: Ionicons,
-  Fontisto: Fontisto,
-  Octicons: Octicons,
-  EvilIcons: EvilIcons,
-  AntDesign: AntDesign,
-  FontAwesome: FontAwesome,
-  FontAwesome5: FontAwesome5,
-  FontAwesome6: FontAwesome6,
-  MaterialIcons: MaterialIcons,
-  MaterialCommunityIcons: MaterialCommunityIcons,
-};
 
 export const IconLibrary: React.FC<IconLibraryProps> = ({
   style,
@@ -49,10 +29,10 @@ export const IconLibrary: React.FC<IconLibraryProps> = ({
   const IconComponent = iconLibraries[library];
   return (
     <IconComponent
-      name={name}
       size={size}
       color={color}
       onPress={onPress}
+      name={name as any}
       style={[style, { opacity: activeOpacity }] as any}
       disabled={typeof onPress === 'function' ? false : true}
     />

@@ -43,6 +43,10 @@ const initialState: UserState = {
   lastCheckinDate: undefined,
 };
 
+const getUserInfo = createAsyncThunk('user/me', async () => {
+  return await AuthApi.getUserInfo({});
+});
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -73,10 +77,6 @@ const userSlice = createSlice({
       state.user = action.payload;
     });
   },
-});
-
-const getUserInfo: any = createAsyncThunk('getUserInfo', async () => {
-  return await AuthApi.getUserInfo({});
 });
 
 export const { setUser, setNotifyCount, setStreak, setLastCheckinDate, updateUser, logout } =

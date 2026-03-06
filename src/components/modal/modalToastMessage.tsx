@@ -1,9 +1,11 @@
-import React, { useState, useLayoutEffect, useCallback } from 'react';
+import React, { useState, useLayoutEffect, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
   Platform,
+  StyleSheet,
   PanResponder,
+  useColorScheme,
   TouchableOpacity,
   InteractionManager,
   DeviceEventEmitter,
@@ -14,16 +16,19 @@ import Animated, {
   withSequence,
   useSharedValue,
   useAnimatedStyle,
-  runOnJS, // Import runOnJS
+  runOnJS, 
 } from 'react-native-reanimated';
 import normalize from 'react-native-normalize';
 
-import { toastStyle as styles } from '@/styles/toast.style';
+import { getTheme } from '@/constants/theme';
 import { IconClose, HelpToast, FailToast, SuccessToast, WarningToast } from '@/assets/icons';
 
 const TOAST_DURATION = 2000;
 
 const ToastMessage = () => {
+  const scheme = useColorScheme();
+  const theme = getTheme(scheme === 'dark' ? 'dark' : 'light');
+  const styles = useMemo(() => createStyles(theme), [theme]);
   const [showingState, setShowingState] = useState(false);
   const toastBottomAnimation = useSharedValue(-100);
   const [toastOptions, setToastOptions] = useState<any>({});
@@ -72,7 +77,7 @@ const ToastMessage = () => {
     InteractionManager.runAfterInteractions(() => {
       toastBottomAnimation.value = withTiming(normalize(-150), undefined, finished => {
         if (finished) {
-          runOnJS(setShowingState)(false); // Sử dụng runOnJS để cập nhật state
+          runOnJS(setShowingState)(false);
         }
       });
     });
@@ -125,3 +130,46 @@ const ToastMessage = () => {
 };
 
 export default ToastMessage;
+
+const createStyles = (theme: any) =>
+  StyleSheet.create({
+    toastContainer: {
+      position: 'absolute',
+      bottom: 0,
+      width: '90%',
+      alignItems: 'center',
+      alignSelf: 'center',
+      backgroundColor: 'transparent',
+    },
+    toastMessageContainer: {
+      position: 'absolute',
+      top: normalize(30),
+      width: normalize(270),
+      height: normalize(100),
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      paddingLeft: normalize(40),
+      left: normalize(45),
+    },
+    toastMessage: {
+      fontFamily: theme.typography.fontFamily.BOLD,
+      fontSize: 14,
+      color: theme.colors.textPrimary,
+      paddingTop: normalize(5),
+    },
+    toastTitle: {
+      fontFamily: theme.typography.fontFamily.BOLD,
+      fontSize: 20,
+      color: theme.colors.textPrimary,
+    },
+    closeIcon: {
+      position: 'absolute',
+      top: normalize(35),
+      right: normalize(5),
+      zIndex: 3,
+      width: normalize(50),
+      height: normalize(50),
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });

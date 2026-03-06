@@ -1,7 +1,7 @@
 export const API_PREFIX = '/api/v1';
 
-export const MAIN_DOMAIN = 'http://192.168.1.51:3343';
-// export const MAIN_DOMAIN = 'http://13.21.34.146:3343';
+// export const MAIN_DOMAIN = 'http://192.168.1.51:3343';
+export const MAIN_DOMAIN = 'http://13.21.34.146:3343';
 
 export const ApiUrl = {
   auth: {
@@ -16,7 +16,7 @@ export const ApiUrl = {
     refreshToken: '/auth/refresh',
   },
   users: {
-    base: '/users',
-    me: '/users/me',
+    base: '/user',
+    me: '/user/me',
   },
 };

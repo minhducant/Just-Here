@@ -11,7 +11,8 @@ import { navigationRef } from '@/navigation/rootNavigation';
 
 //--------------------Screen---------------------//
 import LoginScreen from '@/screens/auth/LoginScreen';
-import SettingsScreen from '@/screens/home/SettingsScreen';
+import SettingsScreen from '@/screens/user/UserScreen';
+import LanguageScreen from '@/screens/user/LanguageScreen';
 import OnboardingScreen from '@/screens/auth/OnboardingScreen';
 import NotificationScreen from '@/screens/home/NotificationScreen';
 
@@ -22,6 +23,8 @@ const AuthStackNavigator = createNativeStackNavigator();
 const screenOptions = {
   headerShown: false,
 };
+
+const screens = [SettingsScreen, LanguageScreen, NotificationScreen];
 
 const AuthStack = () => (
   <AuthStackNavigator.Navigator initialRouteName="Login" screenOptions={screenOptions}>
@@ -34,8 +37,13 @@ const AppStack = () => {
   return (
     <AppStackNavigator.Navigator screenOptions={screenOptions}>
       <AppStackNavigator.Screen name="Tabs" component={BottomTabs} />
-      <AppStackNavigator.Screen name="Settings" component={SettingsScreen} />
-      <AppStackNavigator.Screen name="Notification" component={NotificationScreen} />
+      {screens.map((ScreenComponent, index) => (
+        <AppStackNavigator.Screen
+          key={index}
+          name={ScreenComponent.name}
+          component={ScreenComponent}
+        />
+      ))}
     </AppStackNavigator.Navigator>
   );
 };
